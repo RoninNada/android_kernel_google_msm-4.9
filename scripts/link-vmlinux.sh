@@ -95,7 +95,7 @@ modpost_link()
 	local objects
 
 	if [ -n "${CONFIG_THIN_ARCHIVES}" ]; then
-		objects="--whole-archive built-in.o"
+		objects="--whole-archive built-in.o --no-whole-archive"
 	else
 		objects="${KBUILD_VMLINUX_INIT}				\
 			--start-group					\
@@ -154,7 +154,7 @@ vmlinux_link()
 		fi
 
 		if [[ -n "${CONFIG_THIN_ARCHIVES}" && -z "${CONFIG_LTO_CLANG}" ]]; then
-			objects="--whole-archive built-in.o ${1}"
+			objects="--whole-archive built-in.o ${1} --no-whole-archive"
 		else
 			objects="${KBUILD_VMLINUX_INIT}			\
 				--start-group				\
@@ -166,7 +166,7 @@ vmlinux_link()
 		${ld} ${ldflags} -o ${2} -T ${lds} ${objects}
 	else
 		if [ -n "${CONFIG_THIN_ARCHIVES}" ]; then
-			objects="-Wl,--whole-archive built-in.o ${1}"
+			objects="-Wl,--whole-archive built-in.o ${1} -Wl,--no-whole-archive"
 		else
 			objects="${KBUILD_VMLINUX_INIT}			\
 				-Wl,--start-group			\
