@@ -318,7 +318,7 @@ HOSTCXXFLAGS = -O3 -march=armv8-a+crypto+crc -mtune=cortex-a53 -mcpu=cortex-a53+
 HOSTAFLAGS = -O3 -march=armv8-a+crypto+crc -mtune=cortex-a53 -mcpu=cortex-a53+crypto+crc
 else
 HOSTCFLAGS   := -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89 \
-				-Wno-deprecated-declarations
+				-pipe -Wno-deprecated-declarations
 HOSTCXXFLAGS = -O2
 endif
 
@@ -424,7 +424,7 @@ LINUXINCLUDE    := \
 LINUXINCLUDE	+= $(filter-out $(LINUXINCLUDE),$(USERINCLUDE))
 
 KBUILD_AFLAGS   := -D__ASSEMBLY__
-KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
+KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -pipe \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
