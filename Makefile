@@ -715,7 +715,9 @@ export LDFINAL
 endif
 
 ifdef CONFIG_GCC_GRAPHITE
-KBUILD_CFLAGS	+= -fgraphite-identity -floop-nest-optimize
+  ifeq ($(cc-name),gcc)
+    KBUILD_CFLAGS	+= -fgraphite-identity -floop-nest-optimize
+  endif
 endif
 
 KBUILD_CFLAGS	+= $(call cc-option,-fno-PIE)
