@@ -927,6 +927,7 @@ KBUILD_CFLAGS += $(call cc-disable-warning, duplicate-decl-specifier)
 KBUILD_CFLAGS += $(call cc-disable-warning, compound-token-split-by-space)
 KBUILD_CFLAGS += $(call cc-disable-warning, unused-but-set-parameter)
 KBUILD_CFLAGS += $(call cc-disable-warning, -Wno-deprecated-declarations)
+KBUILD_CFLAGS += $(call cc-disable-warning, void-ptr-dereference)
 
 KBUILD_CFLAGS-$(CONFIG_WERROR) += -Werror
 KBUILD_CFLAGS += $(KBUILD_CFLAGS-y)
