@@ -938,6 +938,7 @@ KBUILD_CFLAGS += $(call cc-disable-warning, excess-initializers)
 KBUILD_CFLAGS += $(call cc-disable-warning, implicit-function-declaration)
 KBUILD_CFLAGS += $(call cc-disable-warning, undefined-internal)
 KBUILD_CFLAGS += $(call cc-disable-warning, unused-function)
+KBUILD_CFLAGS += $(call cc-disable-warning, builtin-macro-redefined)
 
 KBUILD_CFLAGS-$(CONFIG_WERROR) += -Werror
 KBUILD_CFLAGS += $(KBUILD_CFLAGS-y)
