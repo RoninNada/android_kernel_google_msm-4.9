@@ -509,7 +509,8 @@ config LD_DEAD_CODE_DATA_ELIMINATION
 choice
 	prompt "Kernel linker"
 	default LD_BFD if !LTO_CLANG
-	default LD_GOLD if LTO_CLANG
+	default LD_LLD if LTO_CLANG && THINLTO
+	default LD_GOLD if LTO_CLANG && !THINLTO
 	help
 	  This selects the linker that will be used to link the kernel and
 	  its composite objects.
@@ -526,6 +527,7 @@ config LD_BFD
 
 config LD_GOLD
 	bool "gold"
+	depends on !THINLTO
 	help
 	  Use the alternative ld.gold linker from binutils.
 
